@@ -11,13 +11,13 @@ data = [
     {'name': "Christ the Redeemer",
      'country': "Brazil",
      'year_built': 1922,
-     'description' : "a large statue of Jesus Christ in Rio de Janeiro, Brazil"
+     'description' : "a large statue of Jesus Christ in Rio de Janeiro"
     
     },
     {'name': "Colosseum",
      'country': "Italy",
      'year_built': 72,
-     'description' : "an ancient amphitheater in Rome, Italy, used for gladiatorial contests and public spectacles"
+     'description' : "an ancient amphitheater in Rome, used for gladiatorial contests and public spectacles"
 
     },
     {'name': "Great Wall of China",
@@ -29,7 +29,7 @@ data = [
     {'name': "Machu Pichu",
      'country': "Peru",
      'year_built': 1440,
-     'description' : "an Incan citadel and UNESCO World Heritage Site in Peru"
+     'description' : "an Incan citadel and UNESCO World Heritage Site"
     
     },
     {'name': "Petra",
@@ -41,7 +41,7 @@ data = [
     {'name': "Taj Mahal",
      'country': "India",
      'year_built': 1631,
-     'description' : "a white marble mausoleum in Agra, India, built by the Mughal emperor Shah Jahan in memory of his wife Mumtaz Mahal"
+     'description' : "a white marble mausoleum in Agra, built by the Mughal emperor Shah Jahan in memory of his wife Mumtaz Mahal"
     
     },
     # Classic Wonder Worlds
@@ -58,9 +58,9 @@ data = [
     
     },
     {'name': "Hanging Gardens of Babilon",
-     'country': "Iraq",
+     'country': "present day Iraq",
      'year_built': -600, 
-     'description' : " a terraced garden complex built in Mesopotamia, present-day Iraq"
+     'description' : " a terraced garden complex built in Mesopotamia"
     
     },
     {'name': "Temple of Artemis at Ephesus ",
