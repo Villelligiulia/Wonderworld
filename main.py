@@ -2,6 +2,16 @@ from decoration import logo
 from wonders_data import data
 import random
 
+
+def build_the_option(wonder):
+    """
+    Use the wonder data to build the game option
+    """
+    wonder_name = wonder["name"]
+    wonder_description = wonder["description"]
+    wonder_country = wonder["country"]
+    return f"{wonder_name}, {wonder_description}, from {wonder_country}"
+
 # Display decoration
 print(logo)
 
@@ -22,6 +32,5 @@ if wonder_a == wonder_b:
     wonder_b = random.choice(data)
 
 
-
-
-
+print(f"Type 'A' for: {build_the_option(wonder_a)}")
+print(f"Type 'B' for: {build_the_option(wonder_b)}")
