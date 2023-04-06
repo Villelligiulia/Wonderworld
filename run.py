@@ -26,10 +26,11 @@ def introduction_game():
 
 def clear_screen():
     """
-    Will cls the screen if os == to Windows else clear the screen
+    Will clear the screen if os == to Linux else cls the screen
     when the function will be called
     """
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('clear' if os.name == 'posix' else 'cls')
+
 
 
 introduction_game()
