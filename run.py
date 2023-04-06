@@ -30,7 +30,7 @@ def clear_screen():
     Will cls the screen if os == to Windows else clear the screen
     when the function will be called
     """
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('clear' if os.name == 'posix' else 'cls')
 
 
 introduction_game()
@@ -144,7 +144,7 @@ while repeat_game:
             else:
                  print(f"Invalid answer: {new_game}. Please type 'y' if you want to keep playing or 'n' if you want to quit the game\n")
                  new_game = input(f"Want to play again? 'Y' or 'N': \n").lower()
-                 
+
 clear_screen()
 print(f"{final_goodbye}\n")
 print(f"BUT WAIT!! Before you go, check this out!! Below all the Wonder of the Ancient World and Modern World: \n")
