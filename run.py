@@ -131,7 +131,7 @@ while repeat_game:
         else:
             repeat_game = False
             print(f"You are wrong! End of the game. Final score: {score}")
-            new_game = input(f"Want to play again? 'Y' or 'N': ").lower()
+            new_game = input(f"Want to play again? 'Y' or 'N': \n").lower()
             if new_game == "y":
                 clear_screen()
                 print("NICE TO SEE YOU AGAIN!!")
