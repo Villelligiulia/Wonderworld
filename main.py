@@ -1,22 +1,24 @@
-from decoration import logo
+from decoration import logo, final_goodbye
 from wonders_data import data
 import random
 import os
-
 
 
 score = 0
 repeat_game = True
 wonder_b = random.choice(data)
 print("Welcome to the WonderWorld game!\nDid you know that there are 14 Wonders of the World on our planet?")
-print("7 of them belong to the Modern World and the other 7 belong to the Ancient World")
+print("7 of them belong to the Modern World and the other 7 belong to the Ancient World.")
 print("But could you place them in time?? Let's test Your Knowledge!!\n")
+
+
 # Display logo
 def introduction_game():
     print(logo)
-    print("GAME RULES: Two random wonders will be compared with eachother\nType 'A' or 'B' if you think your choice is the Wonder that was built before the other.")
+    print("GAME RULES: Two random wonders will be compared with eachother.\nType 'A' or 'B' if you think your choice is the Wonder that was built before the other.\n")
     print("Example : 'Type 'A' for: Chicken Itza, a complex of Mayan ruins on Mexico's Yucatan Peninsula, in Mexico\nOR Type 'B' for: The Christ Redeemer, a large statue of Jesus Christ in Rio de Janeiro, Brazil, in Brazil")
     print("The correct answer is 'A' as it was built in 800 AC, while 'B' in 1922. HAVE FUN!!\n\n")
+
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -88,7 +90,7 @@ while repeat_game:
 
     # Ask the user for a guess
     
-    answer = input("Which one was built first? 'A' or 'B'?: ").lower()
+    answer = input("Which one was built first? 'A' or 'B'?: \n").lower()
 
 
     # Retrieve int year_built from wonders_data dictionary to get the year of each wonder
@@ -98,15 +100,17 @@ while repeat_game:
     
     
     correct_answer = check_user_answer(answer,wonder_a_years, wonder_b_years)
-
-    # Give user feedback on their guess if the answer is valid
-    ## Track the score
-    ### When the game is over add the option to play again and start the game all over
-    ### Or quit the game and say bye to the user
+    """
+    Give user feedback on their guess if the answer is valid
+    Track the score
+    When the game is over add the option to play again and start the game all over
+    Or quit the game,say 'bye' to the user and print all the description from wonders_data
+    to show the user all the wonders from Ancient and Modern world
+    """
     if answer == 'a' or answer == 'b':
         if correct_answer: 
             score += 1
-            print(f"Wonderfull!! That's correct! Current score: {score}")
+            print(f"Wonderfull!! That's correct! Current score: {score}\n")
             
         else:
             repeat_game = False
@@ -120,6 +124,20 @@ while repeat_game:
                 repeat_game = True
             else:
                 clear_screen()
-                print("BYE BYE")
+                print(f"{final_goodbye}\n")
+                print(f"BUT WAIT!! Before you go, check this out!! Below all the Wonder of the Ancient World and Modern World: \n")
+                for my_dict in data:
+                    output = ""
+                    output += my_dict['name'] + ", "
+                    output += my_dict['description'] + ", "
+                    output += my_dict['country'] + ", "
+                    if my_dict['year_built']<0:
+                        output += f"{str(abs(my_dict['year_built']))} B.C.\n"
+                    else:
+                        output += f"{str(my_dict['year_built'])} A.C.\n"
+                    
+                    print(output)
+
+
 
 
