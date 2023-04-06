@@ -7,8 +7,14 @@ import os
 def play_game():
     """
     main function that contains all the game
-    
+
     """
+    def clear_screen():
+        """
+        Will clear the screen if os == to Linux else cls the screen
+        when the function will be called
+        """
+        os.system('clear' if os.name == 'posix' else 'cls')
     # Declare a score variable to keep track of the score
     score = 0
     # Declare a repeat_game flag which will allow to loop over the same untill it is set to false
@@ -29,12 +35,7 @@ def play_game():
     print("The correct answer is 'A' as it was built in 800 AC, while 'B' in 1922. HAVE FUN!!\n\n")
 
 
-    def clear_screen():
-        """
-        Will clear the screen if os == to Linux else cls the screen
-        when the function will be called
-        """
-        os.system('clear' if os.name == 'posix' else 'cls')
+    
 
 
 
@@ -144,7 +145,7 @@ def play_game():
 
                     play_game()
                     repeat_game = True
-                elif new_game== 'n':
+                elif new_game == 'n':
                     clear_screen()
                     print(f"{final_goodbye}\n")
                     print(f"BUT WAIT!! Before you go, check this out!! Below all the Wonder of the Ancient World and Modern World: \n")
