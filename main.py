@@ -13,23 +13,41 @@ def build_the_option(wonder):
     return f"{wonder_name}, {wonder_description}, from {wonder_country}"
 
 
-def check_user_answer(answer, a_years, b_years):
+def check_user_answer( answer,a_years, b_years):
     """
     Accept user answer and year of wonder 'a' and 'b'
+    Call the validate_data function before checking id the answer inserted is valid
     Use if-else statement to compare the two options against the user answer:
     - if int wonder_a < int wonder_b (i.e it was built before), and the user choose
     'a' return 'a' as True, if the user choose 'b' and wonder_b < a return 'b' as True else return False
+    
     """
+    
+    validate_data(answer)
     if wonder_a_years < wonder_b_years:
         return answer == 'a'
         
     else:
         return answer == 'b'
-        
+
+
+def validate_data(answer):
+    """
+    Accept the user answer and raise and error if the answer given
+    is not "a" or "b"
+    """
+    try:
+        if answer!="a" and answer!="b":
+            raise ValueError(
+                print(f"Invalid answer. Your answer was: {answer}.")
+            )
+    except ValueError as e:
+        print(f"Please type 'a' or 'b'")
 
 
 # Display logo
 print(logo)
+score = 0
 
 # print("Welcome to the WonderWorld game!\nDid you know that there are 14 Wonders of the World on our planet?")
 # print("7 of them belong to the Modern World and the other 7 belong to the Ancient World")
@@ -53,10 +71,21 @@ print("OR")
 print(f"Type 'B' for: {build_the_option(wonder_b)}")
 
 # Ask the user for a guess
-user_guess= input("Which one was built first? 'A' or 'B'?: ").lower()
+answer= input("Which one was built first? 'A' or 'B'?: ").lower()
+
 
 # Retrieve int year_built from wonders_data dictionary to get the year of each wonder
 # Call check_user_answer function to establish if the user guess it's right or not
 wonder_a_years = wonder_a["year_built"]
 wonder_b_years = wonder_b["year_built"]
-correct_answer = check_user_answer(user_guess, wonder_a_years, wonder_b_years)
+
+correct_answer = check_user_answer(answer,wonder_a_years, wonder_b_years)
+
+# Give user feedback on their guess if the answer is valid
+## Track the score
+if answer == 'a' or answer== 'b':
+    if correct_answer: 
+        score+=1
+        print(f"Wonderfull!! That's correct! Current score: {score}")
+    else:
+        print(f"You are wrong! End of the game. Final score: {score}")
