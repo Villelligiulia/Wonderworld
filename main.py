@@ -1,24 +1,30 @@
 from decoration import logo
 from wonders_data import data
 import random
+import os
 
 
-# Display logo
-print(logo)
+
 score = 0
 repeat_game = True
-
+wonder_b = random.choice(data)
 print("Welcome to the WonderWorld game!\nDid you know that there are 14 Wonders of the World on our planet?")
 print("7 of them belong to the Modern World and the other 7 belong to the Ancient World")
 print("But could you place them in time?? Let's test Your Knowledge!!\n")
-print("GAME RULES: Two random wonders will be compared with eachother\nType 'A' or 'B' if you think your choice is the Wonder that was built before the other.")
-print("Example : 'Type 'A' for: Chicken Itza, a complex of Mayan ruins on Mexico's Yucatan Peninsula, in Mexico\nOR Type 'B' for: The Christ Redeemer, a large statue of Jesus Christ in Rio de Janeiro, Brazil, in Brazil")
-print("The correct answer is 'A' as it was built in 800 AC, while 'B' in 1922. HAVE FUN!!\n\n")
+# Display logo
+def introduction_game():
+    print(logo)
+    print("GAME RULES: Two random wonders will be compared with eachother\nType 'A' or 'B' if you think your choice is the Wonder that was built before the other.")
+    print("Example : 'Type 'A' for: Chicken Itza, a complex of Mayan ruins on Mexico's Yucatan Peninsula, in Mexico\nOR Type 'B' for: The Christ Redeemer, a large statue of Jesus Christ in Rio de Janeiro, Brazil, in Brazil")
+    print("The correct answer is 'A' as it was built in 800 AC, while 'B' in 1922. HAVE FUN!!\n\n")
 
-
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 introduction_game()
 
+
+# Repeat the game
 while repeat_game:
     
     def build_the_option(wonder):
@@ -64,11 +70,15 @@ while repeat_game:
 
     
     # Using the random module, generate a random wonder
-    wonder_a = random.choice(data)
+    ## assign the wonder_a to the wonder_b declared outside the first while loop on line 10,
+    ## so that if the answer is correct, on the next iteration the correct answer will be now the first option
+    ## against a new random wonder option
+    
+    wonder_a = wonder_b
     wonder_b = random.choice(data)
 
     # Prevent the same wonder to be compared
-    if wonder_a == wonder_b:
+    while wonder_a == wonder_b:
         wonder_b = random.choice(data)
 
 
@@ -91,6 +101,8 @@ while repeat_game:
 
     # Give user feedback on their guess if the answer is valid
     ## Track the score
+    ### When the game is over add the option to play again and start the game all over
+    ### Or quit the game and say bye to the user
     if answer == 'a' or answer == 'b':
         if correct_answer: 
             score += 1
@@ -99,3 +111,15 @@ while repeat_game:
         else:
             repeat_game = False
             print(f"You are wrong! End of the game. Final score: {score}")
+            new_game = input(f"Want to play again? 'Y' or 'N': ").lower()
+            if new_game == "y":
+                clear_screen()
+                print("NICE TO SEE YOU AGAIN!!")
+
+                introduction_game()
+                repeat_game = True
+            else:
+                clear_screen()
+                print("BYE BYE")
+
+
