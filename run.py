@@ -2,13 +2,11 @@ from decoration import logo, final_goodbye
 from wonders_data import data
 import random
 import os
-# Declare a score variable to keep track of the score
+
 score = 0
-"""Declare a repeat_game flag which will allow to loop over the same
- untill it is set to false"""
 repeat_game = True
 wonder_b = random.choice(data)
-# Initial game statements
+
 print("Welcome to the WonderWorld game!\n")
 print("Did you know that there are 14 Wonders of the World on our planet?")
 print("7 of them belong to the Modern World,")
@@ -17,7 +15,6 @@ print("But could you place them in time?? Let's test Your Knowledge!!\n")
 
 
 def introduction_game():
-    """Display logo and print game rules"""
     print(logo)
     print("GAME RULES: Two random wonders will be compared with eachother.\n")
     print("Type 'A' or 'B' if you think your choice is the Wonder")
@@ -31,41 +28,19 @@ def introduction_game():
 
 
 def clear_screen():
-    """
-    Will cls the screen if os == to Windows else clear the screen
-    when the function will be called
-    """
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
 introduction_game()
-"""
- This loop will repeat the game untill the condition repeat_game
- will be set to False. This will happen when a valid but incorrect
- answer by the user will be given
- """
+
 while repeat_game:
     def build_the_option(wonder):
-        """
-        Use the wonder data to build the game options
-        and return a readable format.
-        """
         wonder_name = wonder["name"]
         wonder_description = wonder["description"]
         wonder_country = wonder["country"]
         return f"{wonder_name}, {wonder_description}, from {wonder_country}"
 
     def check_user_answer(answer, a_years, b_years):
-        """
-        Accept user answer and year of wonder 'a' and 'b'
-        Call the validate_data function to validate that the answer
-        given is valid, before checking that the answer given is correct
-        Use if-else statement to compare the two options against the user
-        answer:
-        - if int wonder_a < int wonder_b (i.e it was built before),
-         and the user choose 'a' return 'a' as True, if the user choose 'b'
-         and wonder_b < a return 'b' as True else return False
-        """
         validate_data(answer)
         if wonder_a_years < wonder_b_years:
             return answer == 'a'
@@ -73,11 +48,6 @@ while repeat_game:
             return answer == 'b'
 
     def validate_data(answer):
-        """
-        Check for the validity of the answer given by the answer
-        Accept the user answer and raise and error if the answer given
-        is not "a" or "b"
-        """
         try:
             if answer != "a" and answer != "b":
                 raise ValueError(
@@ -85,41 +55,19 @@ while repeat_game:
                 )
         except ValueError as e:
             print(f"Please type 'a' or 'b'\n")
-    """
-    Using the random module, generate a random wonder
-    assign the wonder_a to the wonder_b declared outside the first
-    while loop on line 10, so that if the answer is correct, on the next
-    iteration the correct answer will be now the first option against a new
-    random wonder option
-    """
+
     wonder_a = wonder_b
     wonder_b = random.choice(data)
-    # Prevent the same wonder to be compared
     while wonder_a == wonder_b:
         wonder_b = random.choice(data)
     print(f"Type 'A' for: {build_the_option(wonder_a)}")
     print("OR")
     print(f"Type 'B' for: {build_the_option(wonder_b)}")
-    # Ask the user for a guess
+
     answer = input("Which one was built first? 'A' or 'B'?: \n").lower()
-    """Retrieve int year_built from wonders_data dictionary
-    to get the year of each wonder"""
     wonder_a_years = wonder_a["year_built"]
     wonder_b_years = wonder_b["year_built"]
-    """ Call check_user_answer function to establish
-    if the user guess it's right or not"""
     correct_answer = check_user_answer(answer, wonder_a_years, wonder_b_years)
-    """
-    -Give user feedback on their guess if the answer is valid
-    -Track the score
-    -When the game is over add the option to play again and start
-     the game all over.
-      -If the user wants to play again, clear the screen and start the game
-    again.-if the user doesn't want to play anymore, quit the game,
-    say 'bye' to the user and print all the description from wonders_data
-    to show the user all the wonders from Ancient and Modern world in
-     a readable format
-    """
     if answer == 'a' or answer == 'b':
         if correct_answer:
             score += 1
