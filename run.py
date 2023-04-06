@@ -30,7 +30,7 @@ def play_game():
     # Display logo
     # Print game rules
     print(logo)
-    print("GAME RULES: Two random wonders will be compared with eachother.\nType 'A' or 'B' if you think your choice is the Wonder that was built before the other.\n")
+    print("GAME RoLES: Two random wonders will be compared with eachother.\nType 'A' or 'B' if you think your choice is the Wonder that was built before the other.\n")
     print("Example : 'Type 'A' for: Chicken Itza, a complex of Mayan ruins on Mexico's Yucatan Peninsula, in Mexico\nOR Type 'B' for: The Christ Redeemer, a large statue of Jesus Christ in Rio de Janeiro, in Brazil")
     print("The correct answer is 'A' as it was built in 800 AC, while 'B' in 1922. HAVE FUN!!\n\n")
 
