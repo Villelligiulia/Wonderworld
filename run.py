@@ -140,7 +140,7 @@ while repeat_game:
                 introduction_game()
                 repeat_game = True
             elif new_game== 'n':
-                repeat_game == False
+                
                 clear_screen()
                 print(f"{final_goodbye}\n")
                 print(f"BUT WAIT!! Before you go, check this out!! Below all the Wonder of the Ancient World and Modern World: \n")
