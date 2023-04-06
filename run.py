@@ -22,6 +22,7 @@ def introduction_game():
     print("GAME RULES: Two random wonders will be compared with eachother.\nType 'A' or 'B' if you think your choice is the Wonder that was built before the other.\n")
     print("Example : 'Type 'A' for: Chicken Itza, a complex of Mayan ruins on Mexico's Yucatan Peninsula, in Mexico\nOR Type 'B' for: The Christ Redeemer, a large statue of Jesus Christ in Rio de Janeiro, in Brazil")
     print("The correct answer is 'A' as it was built in 800 AC, while 'B' in 1922. HAVE FUN!!\n\n")
+    
 
 
 def clear_screen():
@@ -49,7 +50,7 @@ while repeat_game:
         wonder_description = wonder["description"]
         wonder_country = wonder["country"]
         return f"{wonder_name}, {wonder_description}, from {wonder_country}"
-
+        
 
     def check_user_answer( answer,a_years, b_years):
         """
@@ -139,23 +140,26 @@ while repeat_game:
                 introduction_game()
                 repeat_game = True
             elif new_game== 'n':
-                clear_screen()
-                print(f"{final_goodbye}\n")
-                print(f"BUT WAIT!! Before you go, check this out!! Below all the Wonder of the Ancient World and Modern World: \n")
-                for my_dict in data:
-                    output = ""
-                    output += my_dict['name'] + ", "
-                    output += my_dict['description'] + ", "
-                    output += my_dict['country'] + ", "
-                    if my_dict['year_built'] < 0:
-                        output += f"{str(abs(my_dict['year_built']))} B.C.\n"
-                    else:
-                        output += f"{str(my_dict['year_built'])} A.C.\n"
-                    
-                    print(output)
+                break
             else:
                  print(f"Invalid answer: {new_game}. Please type 'y' if you want to keep playing or 'n' if you want to quit the game\n")
                  new_game = input(f"Want to play again? 'Y' or 'N': \n").lower()
+                 
+clear_screen()
+print(f"{final_goodbye}\n")
+print(f"BUT WAIT!! Before you go, check this out!! Below all the Wonder of the Ancient World and Modern World: \n")
+for my_dict in data:
+    output = ""
+    output += my_dict['name'] + ", "
+    output += my_dict['description'] + ", "
+    output += my_dict['country'] + ", "
+    if my_dict['year_built'] < 0:
+        output += f"{str(abs(my_dict['year_built']))} B.C.\n"
+    else:
+        output += f"{str(my_dict['year_built'])} A.C.\n"
+    
+    print(output)
+
                 
 
 
