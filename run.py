@@ -31,7 +31,14 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+def start_game():
+    start = input("PRESS ANY KEY AND ENTER TO START THE GAME: \n")
+    if start != "":
+        clear_screen()
+
+
 introduction_game()
+start_game()
 
 while repeat_game:
     def build_the_option(wonder):

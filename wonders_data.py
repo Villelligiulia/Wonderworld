@@ -65,7 +65,7 @@ data = [
     {'name': "Lighthouse of Alexandria",
      'country': "Egypt",
      'year_built': -300,
-     'description': "a tall lighthouse on the coast of Egypt, built to guide ships into the harbor"
+     'description': "a tall lighthouse on the coast of Egypt, built to guide yships into the harbor"
      },
     {'name': "Colossus of Rhodes",
      'country': "Greece",
